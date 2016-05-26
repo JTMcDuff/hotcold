@@ -1,0 +1,45 @@
+<DOCTYPE HTML>
+<html>
+
+<body>
+
+<script>
+// Returns a random integer between min (included) and max (included)
+// Using Math.round() will give you a non-uniform distribution!
+// Got function from MDC. 
+function getInt(min, max) {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+  }
+
+// Function submit allows value guess to be submitted, and returns the correct value.
+//var guess = undefined;
+//function submit(){
+//if(guess === 100) {return 'you got it'}
+//else if(guess===undefined) {console.log('Guess a number')}
+//else {console.log('nope...guess again')
+//}
+//submit()
+
+//Function hotCold takes integer from getInt into variable jackPot
+//Function runs until value "guess" is equal to jackPot, or until "end" is entered as a value.
+function hotCold() {
+var jackPot=getInt(1,100);
+console.log("Welcome to Hot or Cold! Please guess a number 1-100.");
+var guess=prompt("Your guess is?");
+while (guess!=jackPot){
+if (guess=="end") {console.log("Ending game."); guess=jackPot;}
+else if (isNaN(guess)) {console.log("Not an integer.  Please try again");  guess=prompt("Your guess is?");}
+else if (Math.abs(guess-jackPot)>=50) {console.log("Ice cold!"); guess=prompt("Your guess is?");}
+else if (Math.abs(guess-jackPot)>=25) {console.log("Cold!");  guess=prompt("Your guess is?");}
+else if (Math.abs(guess-jackPot)>=13) {console.log("Warm");  guess=prompt("Your guess is?");}
+else if (Math.abs(guess-jackPot)>=5)  {console.log("Hot");  guess=prompt("Your guess is?");}
+else if (Math.abs(guess-jackPot)>=3)  {console.log("Smoking!");  guess=prompt("Your guess is?");}
+//else if (guess==jackPot) {console.log("You win!");} 
+}
+console.log("Game over!");
+		  }
+</script>
+
+</body>
+
+</html>
