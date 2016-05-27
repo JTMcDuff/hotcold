@@ -25,19 +25,26 @@ function getInt(min, max) {
 function hotCold() {
 var jackPot=getInt(1,100);
 console.log("Welcome to Hot or Cold! Please guess a number 1-100.");
-var guess=prompt("Your guess is?");
+var guess;
+var numGuess=0;
+var arrguess = new Array();
 while (guess!=jackPot){
+numGuess++;
+arrguess.sort()
+guess=prompt("Previous guesses are: "+arrguess+". This is Guess number "+numGuess+". Your guess is?");
+arrguess.push(guess);
 if (guess=="end") {console.log("Ending game."); guess=jackPot;}
-else if (isNaN(guess)) {console.log("Not an integer.  Please try again");  guess=prompt("Your guess is?");}
-else if (Math.abs(guess-jackPot)>=50) {console.log("Ice cold!"); guess=prompt("Your guess is?");}
-else if (Math.abs(guess-jackPot)>=25) {console.log("Cold!");  guess=prompt("Your guess is?");}
-else if (Math.abs(guess-jackPot)>=13) {console.log("Warm");  guess=prompt("Your guess is?");}
-else if (Math.abs(guess-jackPot)>=5)  {console.log("Hot");  guess=prompt("Your guess is?");}
-else if (Math.abs(guess-jackPot)>=3)  {console.log("Smoking!");  guess=prompt("Your guess is?");}
-//else if (guess==jackPot) {console.log("You win!");} 
+else if (isNaN(guess)||guess<=0||guess>100) {console.log("Not a valid number between 1 and 100. Please try again");} 
+else if (Math.abs(guess-jackPot)>=50) {console.log("Ice cold!");} 
+else if (Math.abs(guess-jackPot)>=25) {console.log("Cold!"); } 
+else if (Math.abs(guess-jackPot)>=13) {console.log("Warm"); } 
+else if (Math.abs(guess-jackPot)>=5)  {console.log("Hot"); } 
+else if (Math.abs(guess-jackPot)>=1)  {console.log("Smoking!");}
+else if (guess==jackPot) {console.log("You win! It took you "+numGuess+" guesses!");}
 }
 console.log("Game over!");
-		  }
+}
+
 </script>
 
 </body>
